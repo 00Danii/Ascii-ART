@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Code } from "lucide-react";
 import { ControlsPanel } from "./controls-panel";
 import { AsciiDisplay } from "./ascii-display";
 import { useAsciiConverter } from "@/hooks/use-ascii-converter";
@@ -12,13 +11,12 @@ export default function AsciiArtGenerator() {
   const [asciiArt, setAsciiArt] = useState<string>("");
   const [coloredAscii, setColoredAscii] = useState<ColoredPixel[][]>([]);
   const [isProcessing, setIsProcessing] = useState(false);
-  const [imageAspectRatio, setImageAspectRatio] = useState(1);
   const [zoom, setZoom] = useState(1);
   const [settings, setSettings] = useState<AsciiSettings>({
     width: 120,
     charSet: 0,
-    contrast: 1.2,
-    brightness: 10,
+    contrast: 1.5,
+    brightness: 0,
     colorMode: 0,
     invertColors: false,
   });
@@ -40,14 +38,13 @@ export default function AsciiArtGenerator() {
     convertToAscii(
       imageUrl,
       settings,
-      (ascii, colored, aspectRatio) => {
+      (ascii, colored) => {
         setAsciiArt(ascii);
         setColoredAscii(colored);
-        setImageAspectRatio(aspectRatio);
         setIsProcessing(false);
       },
       (error) => {
-        console.error("Error processing image:", error);
+        console.error("Error al procesar la imagen:", error);
         setIsProcessing(false);
       }
     );
@@ -68,11 +65,14 @@ export default function AsciiArtGenerator() {
       width: 120,
       charSet: 0,
       contrast: 1.2,
-      brightness: 10,
+      brightness: 0,
       colorMode: 0,
       invertColors: false,
     });
     setZoom(1);
+    setOriginalImage(null);
+    setAsciiArt("");
+    setColoredAscii([]);
   };
 
   useEffect(() => {
@@ -101,10 +101,9 @@ export default function AsciiArtGenerator() {
 
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 flex-grow">
           {/* Panel de Controles */}
-          <div className="lg:col-span-1">
+          <div className="lg:col-span-1 sticky top-4 self-start">
             <ControlsPanel
               originalImage={originalImage}
-              imageAspectRatio={imageAspectRatio}
               zoom={zoom}
               settings={settings}
               asciiArt={asciiArt}

@@ -10,18 +10,18 @@ export const ASCII_CHARS = [
 
 export const CHAR_SET_NAMES = [
   "Clásico",
-  "Ultra Detallado",
+  "Detallado",
   "Minimalista",
   "Bloques",
   "Braille",
 ];
 
 export const COLOR_OPTIONS: ColorOption[] = [
-  { name: "Verde Terminal", value: "text-green-400", bg: "bg-black" },
-  { name: "Rosa Neón", value: "text-pink-400", bg: "bg-black" },
-  { name: "Blanco Puro", value: "text-white", bg: "bg-black" },
-  { name: "Gris Clásico", value: "text-gray-300", bg: "bg-black" },
-  { name: "Cyan Retro", value: "text-cyan-400", bg: "bg-black" },
-  { name: "Amarillo Brillante", value: "text-yellow-400", bg: "bg-black" },
+  { name: "Verde Terminal", value: "text-green-500", bg: "bg-black" },
+  { name: "Rosa", value: "text-pink-500", bg: "bg-black" },
+  { name: "Blanco", value: "text-white", bg: "bg-black" },
+  { name: "Gris", value: "text-gray-300", bg: "bg-black" },
+  { name: "Cyan", value: "text-cyan-400", bg: "bg-black" },
+  { name: "Amarillo", value: "text-yellow-400", bg: "bg-black" },
   { name: "Tonos Originales", value: "original", bg: "bg-black" },
 ];

@@ -21,7 +21,6 @@ import { CHAR_SET_NAMES } from "@/constants/ascii";
 
 interface ControlsPanelProps {
   originalImage: string | null;
-  imageAspectRatio: number;
   zoom: number;
   settings: AsciiSettings;
   asciiArt: string;
@@ -34,7 +33,6 @@ interface ControlsPanelProps {
 
 export function ControlsPanel({
   originalImage,
-  imageAspectRatio,
   zoom,
   settings,
   asciiArt,
@@ -52,7 +50,7 @@ export function ControlsPanel({
   };
 
   return (
-    <Card className="bg-gray-900 border-gray-800">
+    <Card className="bg-black border-green-500">
       {/* <CardHeader className="pb-4">
         <CardTitle className="flex items-center gap-2 text-white">
           Controles
@@ -79,8 +77,8 @@ export function ControlsPanel({
         {/* Resolución */}
         <div className="space-y-3">
           <div className="flex justify-between items-center">
-            <Label className="text-gray-200 font-medium">Resolución</Label>
-            <span className="text-green-400 font-mono text-sm">
+            <Label className="text-green-300 font-medium">Resolución</Label>
+            <span className="text-green-500 font-mono text-sm">
               {settings.width}px
             </span>
           </div>
@@ -90,7 +88,7 @@ export function ControlsPanel({
             max={200}
             min={40}
             step={10}
-            className="[&_[role=slider]]:bg-pink-500 [&_[role=slider]]:border-0"
+            className="[&_[role=slider]]:bg-green-500 [&_[role=slider]]:border-0"
           />
         </div>
 
@@ -98,22 +96,22 @@ export function ControlsPanel({
 
         {/* Estilo de caracteres */}
         <div className="space-y-3">
-          <Label className="text-gray-200 font-medium">Estilo ASCII</Label>
+          <Label className="text-green-300 font-medium">Estilo ASCII</Label>
           <Select
             value={settings.charSet.toString()}
             onValueChange={(value) =>
               updateSetting("charSet", Number.parseInt(value))
             }
           >
-            <SelectTrigger className="bg-gray-800 border-gray-700 text-white">
+            <SelectTrigger className="bg-black border-green-500 text-green-500 w-full">
               <SelectValue />
             </SelectTrigger>
-            <SelectContent className="bg-gray-800 border-gray-700">
+            <SelectContent className="bg-black border-green-500">
               {CHAR_SET_NAMES.map((name, index) => (
                 <SelectItem
                   key={index}
                   value={index.toString()}
-                  className="text-white hover:bg-gray-700"
+                  className="text-green-500 hover:bg-black"
                 >
                   {name}
                 </SelectItem>
@@ -129,21 +127,21 @@ export function ControlsPanel({
 
         {/* Invertir colores */}
         <div className="flex items-center justify-between">
-          <Label className="text-gray-200 font-medium">Invertir colores</Label>
+          <Label className="text-green-300 font-medium">Invertir colores</Label>
           <Switch
             checked={settings.invertColors}
             onCheckedChange={(checked) =>
               updateSetting("invertColors", checked)
             }
-            className="data-[state=checked]:bg-green-500"
+            className="data-[state=checked]:bg-green-800"
           />
         </div>
 
         {/* Contraste */}
         <div className="space-y-3">
           <div className="flex justify-between items-center">
-            <Label className="text-gray-200 font-medium">Contraste</Label>
-            <span className="text-green-400 font-mono text-sm">
+            <Label className="text-green-300 font-medium">Contraste</Label>
+            <span className="text-green-500 font-mono text-sm">
               {settings.contrast.toFixed(1)}
             </span>
           </div>
@@ -160,8 +158,8 @@ export function ControlsPanel({
         {/* Brillo */}
         <div className="space-y-3">
           <div className="flex justify-between items-center">
-            <Label className="text-gray-200 font-medium">Brillo</Label>
-            <span className="text-green-400 font-mono text-sm">
+            <Label className="text-green-300 font-medium">Brillo</Label>
+            <span className="text-green-500 font-mono text-sm">
               {settings.brightness > 0 ? "+" : ""}
               {settings.brightness}
             </span>
@@ -177,24 +175,24 @@ export function ControlsPanel({
         </div>
 
         {/* Botones */}
-        <div className="space-y-3 pt-4">
+        <div className="space-y-3 pt-4 flex grid grid-cols-2 gap-2">
           <Button
             onClick={onReset}
             variant="outline"
-            className="w-full bg-gray-800 border-gray-700 text-gray-200 hover:bg-gray-700 transition-all duration-300"
+            className="w-full bg-black border-green-500 text-green-500 hover:bg-black hover:text-green-300 transition-all duration-300"
           >
             <RotateCcw className="w-4 h-4 mr-2" />
             Resetear
           </Button>
-          {asciiArt && (
-            <Button
-              onClick={onDownload}
-              className="w-full bg-gradient-to-r from-pink-500 to-green-500 hover:from-pink-600 hover:to-green-600 transition-all duration-300"
-            >
-              <Download className="w-4 h-4 mr-2" />
-              Descargar ASCII
-            </Button>
-          )}
+
+          <Button
+            onClick={onDownload}
+            className="w-full border border-green-500 bg-green-500/10 hover:bg-green-500/20 text-green-300 hover:text-green-200 transition-all duration-300"
+            disabled={!asciiArt || !originalImage}
+          >
+            <Download className="w-4 h-4 mr-2" />
+            Descargar
+          </Button>
         </div>
       </CardContent>
     </Card>

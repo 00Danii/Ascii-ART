@@ -14,8 +14,8 @@ export function ZoomControl({ zoom, onZoomChange }: ZoomControlProps) {
   return (
     <div className="space-y-3">
       <div className="flex justify-between items-center">
-        <Label className="text-gray-200 font-medium">Zoom</Label>
-        <span className="text-green-400 font-mono text-sm">
+        <Label className="text-green-300 font-medium">Zoom</Label>
+        <span className="text-green-500 font-mono text-sm">
           {(zoom * 100).toFixed(0)}%
         </span>
       </div>
@@ -23,7 +23,7 @@ export function ZoomControl({ zoom, onZoomChange }: ZoomControlProps) {
         <Button
           size="icon"
           variant="outline"
-          className="bg-gray-800 border-gray-700 text-gray-200 hover:bg-gray-700"
+          className="bg-black border-green-700 text-green-200 hover:bg-black hover:text-green-300"
           onClick={() => onZoomChange(Math.max(0.5, zoom - 0.1))}
         >
           <ZoomOut className="w-4 h-4" />
@@ -39,7 +39,7 @@ export function ZoomControl({ zoom, onZoomChange }: ZoomControlProps) {
         <Button
           size="icon"
           variant="outline"
-          className="bg-gray-800 border-gray-700 text-gray-200 hover:bg-gray-700"
+          className="bg-black border-green-700 text-green-200 hover:bg-black hover:text-green-300"
           onClick={() => onZoomChange(Math.min(2, zoom + 0.1))}
         >
           <ZoomIn className="w-4 h-4" />

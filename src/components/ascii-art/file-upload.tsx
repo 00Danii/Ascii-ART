@@ -25,7 +25,6 @@ export function FileUpload({ originalImage, onFileUpload }: FileUploadProps) {
 
   return (
     <div className="space-y-3">
-      <Label className="text-gray-200 font-medium">Subir Imagen</Label>
       <div className="relative">
         <Input
           type="file"
@@ -37,14 +36,14 @@ export function FileUpload({ originalImage, onFileUpload }: FileUploadProps) {
         <Button
           onClick={() => fileInputRef.current?.click()}
           variant="outline"
-          className="w-full h-32 border-dashed border-2 border-pink-500 bg-pink-500/10 hover:bg-pink-500/20 text-pink-300 hover:text-pink-200 transition-all duration-300 flex flex-col gap-2"
+          className="w-full h-32 border-dashed border-2 border-green-500 bg-green-500/10 hover:bg-green-500/20 text-green-300 hover:text-green-200 transition-all duration-300 flex flex-col gap-2"
         >
           {originalImage ? (
             <div className="flex flex-col items-center gap-2">
               <img
                 src={originalImage || "/placeholder.svg"}
                 alt="Preview"
-                className="w-16 h-16 object-cover rounded border-2 border-pink-400"
+                className="w-16 h-16 object-cover rounded border-2 border-green-400"
               />
               <span className="text-xs">Cambiar imagen</span>
             </div>
