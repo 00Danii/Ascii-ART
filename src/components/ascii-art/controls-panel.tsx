@@ -1,6 +1,6 @@
 "use client";
 
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Slider } from "@/components/ui/slider";
 import { Label } from "@/components/ui/label";
@@ -12,7 +12,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Switch } from "@/components/ui/switch";
-import { Download, RotateCcw, Palette } from "lucide-react";
+import { Download, RotateCcw } from "lucide-react";
 import { FileUpload } from "./file-upload";
 import { ZoomControl } from "./zoom-control";
 import { ColorSelector } from "./color-selector";
@@ -175,14 +175,14 @@ export function ControlsPanel({
         </div>
 
         {/* Botones */}
-        <div className="space-y-3 pt-4 flex grid grid-cols-2 gap-2">
+        <div className="space-y-3 pt-4 grid grid-cols-2 gap-2">
           <Button
             onClick={onReset}
             variant="outline"
             className="w-full bg-black border-green-500 text-green-500 hover:bg-black hover:text-green-300 transition-all duration-300"
           >
             <RotateCcw className="w-4 h-4 mr-2" />
-            Resetear
+            Reiniciar
           </Button>
 
           <Button
