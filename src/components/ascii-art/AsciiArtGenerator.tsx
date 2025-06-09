@@ -21,7 +21,8 @@ export default function AsciiArtGenerator() {
     invertColors: false,
   });
 
-  const { convertToAscii, canvasRef } = useAsciiConverter();
+  const { convertToAscii, downloadAsImage, canvasRef, downloadCanvasRef } =
+    useAsciiConverter();
 
   const handleFileUpload = (file: File) => {
     const reader = new FileReader();
@@ -51,13 +52,15 @@ export default function AsciiArtGenerator() {
   };
 
   const downloadAscii = () => {
-    const element = document.createElement("a");
-    const file = new Blob([asciiArt], { type: "text/plain" });
-    element.href = URL.createObjectURL(file);
-    element.download = "ascii-art.txt";
-    document.body.appendChild(element);
-    element.click();
-    document.body.removeChild(element);
+    // const element = document.createElement("a");
+    // const file = new Blob([asciiArt], { type: "text/plain" });
+    // element.href = URL.createObjectURL(file);
+    // element.download = "ascii-art.txt";
+    // document.body.appendChild(element);
+    // element.click();
+    // document.body.removeChild(element);
+
+    downloadAsImage(asciiArt, coloredAscii, settings, zoom);
   };
 
   const resetSettings = () => {
@@ -126,8 +129,9 @@ export default function AsciiArtGenerator() {
               isProcessing={isProcessing}
             />
 
-            {/* Canvas oculto */}
+            {/* Canvas ocultos */}
             <canvas ref={canvasRef} className="hidden" />
+            <canvas ref={downloadCanvasRef} className="hidden" />
           </div>
         </div>
       </div>

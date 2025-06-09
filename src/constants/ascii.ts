@@ -50,3 +50,19 @@ export const COLOR_OPTIONS: ColorOption[] = [
   { name: "Naranja", value: "text-orange-500", bg: "bg-black" },
   { name: "Tonos Originales", value: "original", bg: "bg-black" },
 ];
+
+// Configuraciones específicas para cada estilo de carácter
+export const CHAR_STYLE_CONFIG = {
+  0: { aspectRatio: 0.5, name: "Clásico" }, // Caracteres normales
+  1: { aspectRatio: 0.5, name: "Ultra Detallado" },
+  2: { aspectRatio: 0.5, name: "Minimalista" },
+  3: { aspectRatio: 0.6, name: "Bloques" }, // Bloques son más cuadrados
+  4: { aspectRatio: 0.8, name: "Braille" }, // Braille necesita proporción diferente
+  5: { aspectRatio: 0.7, name: "Formas Geométricas" },
+  6: { aspectRatio: 0.5, name: "Líneas y Marcos" },
+  7: { aspectRatio: 0.8, name: "Puntos Modernos" },
+  8: { aspectRatio: 0.4, name: "Barras Verticales" }, // Barras son más altas
+  9: { aspectRatio: 0.6, name: "Símbolos Especiales" },
+  10: { aspectRatio: 0.5, name: "Matemático" },
+  11: { aspectRatio: 0.6, name: "Bloques Avanzados" },
+};

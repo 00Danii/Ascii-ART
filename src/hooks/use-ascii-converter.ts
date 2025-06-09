@@ -2,10 +2,11 @@
 
 import { useCallback, useRef } from "react";
 import type { AsciiSettings, ColoredPixel } from "../types/ascii";
-import { ASCII_CHARS } from "../constants/ascii";
+import { ASCII_CHARS, CHAR_STYLE_CONFIG, COLOR_OPTIONS } from "../constants/ascii";
 
 export function useAsciiConverter() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const downloadCanvasRef = useRef<HTMLCanvasElement>(null);
 
   const convertToAscii = useCallback(
     (
@@ -96,5 +97,122 @@ export function useAsciiConverter() {
     []
   );
 
-  return { convertToAscii, canvasRef };
+  const downloadAsImage = useCallback(
+    (
+      asciiArt: string,
+      coloredAscii: ColoredPixel[][],
+      settings: AsciiSettings,
+      zoom = 1
+    ) => {
+      const canvas = downloadCanvasRef.current;
+      if (!canvas) return;
+
+      const ctx = canvas.getContext("2d");
+      if (!ctx) return;
+
+      const colorOption = COLOR_OPTIONS[settings.colorMode];
+      const charConfig =
+        CHAR_STYLE_CONFIG[settings.charSet as keyof typeof CHAR_STYLE_CONFIG] ||
+        CHAR_STYLE_CONFIG[0];
+
+      // Configuración del canvas para la descarga
+      const fontSize = 25; // Tamaño base de fuente para la imagen
+      const charWidth = fontSize * 0.6; // Ancho aproximado de cada carácter
+      const lineHeight =
+        fontSize *
+        (charConfig.aspectRatio === 0.8
+          ? 0.8
+          : charConfig.aspectRatio === 0.6
+          ? 0.6
+          : charConfig.aspectRatio === 0.4
+          ? 0.4
+          : 0.5);
+
+      // Calcular dimensiones del canvas
+      const lines = asciiArt.split("\n");
+      const maxLineLength = Math.max(...lines.map((line) => line.length));
+      const canvasWidth = maxLineLength * charWidth + 40; // Padding
+      const canvasHeight = lines.length * lineHeight + 40; // Padding
+
+      canvas.width = canvasWidth;
+      canvas.height = canvasHeight;
+
+      // Configurar el contexto
+      ctx.font = `${fontSize}px monospace`;
+      ctx.textBaseline = "top";
+
+      // Fondo según el modo de color
+      if (colorOption.bg === "bg-black") {
+        ctx.fillStyle = "#000000";
+      } else {
+        ctx.fillStyle = "#ffffff";
+      }
+      ctx.fillRect(0, 0, canvasWidth, canvasHeight);
+
+      // Renderizar el ASCII
+      if (colorOption.value === "original" && coloredAscii.length > 0) {
+        // Modo con colores originales
+        coloredAscii.forEach((row, i) => {
+          row.forEach((pixel, j) => {
+            ctx.fillStyle = pixel.color;
+            ctx.fillText(pixel.char, j * charWidth , i * lineHeight );
+          });
+        });
+      } else {
+        // Modo con color sólido
+        let textColor = "#ffffff"; // Default
+        switch (colorOption.value) {
+          case "text-green-500":
+            textColor = "#4ade80";
+            break;
+          case "text-pink-500":
+            textColor = "#f472b6";
+            break;
+          case "text-white":
+            textColor = "#ffffff";
+            break;
+          case "text-gray-300":
+            textColor = "#d1d5db";
+            break;
+          case "text-cyan-400":
+            textColor = "#22d3ee";
+            break;
+          case "text-yellow-400":
+            textColor = "#facc15";
+            break;
+          case "text-blue-500":
+            textColor = "#60a5fa";
+            break;
+          case "text-purple-500":
+            textColor = "#c084fc";
+            break;
+          case "text-orange-500":
+            textColor = "#fb923c";
+            break;
+        }
+
+        ctx.fillStyle = textColor;
+        lines.forEach((line, i) => {
+          ctx.fillText(line, 20, i * lineHeight + 20);
+        });
+      }
+
+      // Descargar la imagen
+      canvas.toBlob((blob) => {
+        if (blob) {
+          const url = URL.createObjectURL(blob);
+          const link = document.createElement("a");
+          link.href = url;
+          link.download = "ascii-art.png";
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+          URL.revokeObjectURL(url);
+        }
+      }, "image/png");
+    },
+    []
+  );
+
+  return { convertToAscii, downloadAsImage, canvasRef, downloadCanvasRef };
 }
