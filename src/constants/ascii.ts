@@ -15,7 +15,7 @@ export const ASCII_CHARS = [
   " ╱╲╳▲▼◄►♦♠♣♥", // Símbolos Especiales
   // " ⟨⟩⟪⟫⟬⟭⟮⟯⟰⟱", // Matemáticos
   " ░▒▓█▀▄▌▐■□▪▫", // Bloques Avanzados
-  " ♥",
+  " ♥♥♥",
   " 0123456789", // Números
 ];
 
