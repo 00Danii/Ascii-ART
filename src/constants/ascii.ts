@@ -5,6 +5,7 @@ export const ASCII_CHARS = [
   " .'`^\",:;Il!i><~+_-?][}{1)(|\\/tfjrxnuvczXYUJCLQ0OZmwqpdbkhao*#MW&8%B@$",
   " .,-~:;=!*#$@",
   " ░▒▓█",
+  " •.:",
   // " ⠁⠂⠃⠄⠅⠆⠇⠈⠉⠊⠋⠌⠍⠎⠏⠐⠑⠒⠓⠔⠕⠖⠗⠘⠙⠚⠛⠜⠝⠞⠟⠠⠡⠢⠣⠤⠥⠦⠧⠨⠩⠪⠫⠬⠭⠮⠯⠰⠱⠲⠳⠴⠵⠶⠷⠸⠹⠺⠻⠼⠽⠾⠿",
   // " ⠀⠁⠈⠂⠊⠒⠢⠆⠤⠔⠴⠌⠬⠼⠽⠿", // Braille (optimizado)
   // " ◦•◘○●◉⬢⬣⬡", // Círculos y Formas
@@ -14,6 +15,8 @@ export const ASCII_CHARS = [
   " ╱╲╳▲▼◄►♦♠♣♥", // Símbolos Especiales
   // " ⟨⟩⟪⟫⟬⟭⟮⟯⟰⟱", // Matemáticos
   " ░▒▓█▀▄▌▐■□▪▫", // Bloques Avanzados
+  " ♥",
+  " 0123456789", // Números
 ];
 
 export const CHAR_SET_NAMES = [
@@ -21,6 +24,7 @@ export const CHAR_SET_NAMES = [
   "Detallado",
   "Minimalista",
   "Bloques",
+  "Braile",
   // "Braille",
   // "Braille Optimizado",
   // "Formas Geométricas",
@@ -30,6 +34,8 @@ export const CHAR_SET_NAMES = [
   "Símbolos Especiales",
   // "Matemático",
   "Bloques Avanzados",
+  "Corazones",
+  "Números",
 ];
 
 export const COLOR_OPTIONS: ColorOption[] = [
