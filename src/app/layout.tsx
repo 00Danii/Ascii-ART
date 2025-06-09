@@ -20,6 +20,7 @@ export const metadata: Metadata = {
     locale: "es_MX",
     type: "website",
   },
+  authors: [{ name: "Danii" }],
 };
 
 export default function RootLayout({
