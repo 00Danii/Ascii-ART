@@ -130,14 +130,20 @@ export function useAsciiConverter() {
           ? 0.4
           : 0.5);
 
-      // Calcular dimensiones del canvas
-      const lines = asciiArt.split("\n");
-      const maxLineLength = Math.max(...lines.map((line) => line.length));
-      const canvasWidth = maxLineLength * charWidth + 40; // Padding
-      const canvasHeight = lines.length * lineHeight + 40; // Padding
-
+      // ...dentro de downloadAsImage...
+      ctx.font = `${fontSize}px monospace`;
+      ctx.textBaseline = "top";
+      const lines = asciiArt
+        .split("\n")
+        .filter((line) => line.trim().length > 0);
+      const maxLineWidth = Math.max(
+        ...lines.map((line) => ctx.measureText(line).width)
+      );
+      const canvasWidth = Math.ceil(maxLineWidth) + 40;
+      const canvasHeight = lines.length * lineHeight + 40;
       canvas.width = canvasWidth;
       canvas.height = canvasHeight;
+      // ...resto igual...
 
       // Configurar el contexto
       ctx.font = `${fontSize}px monospace`;
