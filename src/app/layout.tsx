@@ -12,8 +12,8 @@ export const metadata: Metadata = {
     images: [
       {
         url: "https://i.imgur.com/t7SlXqe.png",
-        width: 1200,
-        height: 630,
+        // width: 1200,
+        // height: 630,
         alt: "Ejemplo de arte ASCII",
       },
     ],
