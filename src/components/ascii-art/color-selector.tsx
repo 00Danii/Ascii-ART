@@ -8,7 +8,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Label } from "@/components/ui/label";
-import { COLOR_OPTIONS } from "@/constants/ascii";
+import { COLOR_OPTIONS, COLOR_HEX_MAP } from "@/constants/ascii";
 
 interface ColorSelectorProps {
   colorMode: number;
@@ -38,12 +38,18 @@ export function ColorSelector({
             >
               <div className="flex items-center gap-2">
                 <div
-                  className={`w-3 h-3 rounded-full ${
+                  className="w-3 h-3 rounded-full"
+                  style={
                     option.value === "original"
-                      ? "bg-gradient-to-r from-red-400 via-green-400 to-blue-400"
-                      : option.value.replace("text-", "bg-")
-                  }`}
-                ></div>
+                      ? {
+                          background:
+                            "linear-gradient(to right, #f87171, #4ade80, #60a5fa)", // rojo, verde, azul
+                        }
+                      : {
+                          background: COLOR_HEX_MAP[option.value] || "#22c55e",
+                        }
+                  }
+                />
                 {option.name}
               </div>
             </SelectItem>

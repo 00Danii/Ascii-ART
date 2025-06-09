@@ -51,6 +51,18 @@ export const COLOR_OPTIONS: ColorOption[] = [
   { name: "Tonos Originales", value: "original", bg: "bg-black" },
 ];
 
+export const COLOR_HEX_MAP: Record<string, string> = {
+  "text-green-500": "#22c55e",
+  "text-pink-500": "#ec4899",
+  "text-white": "#ffffff",
+  "text-gray-300": "#d1d5db",
+  "text-cyan-400": "#22d3ee",
+  "text-yellow-400": "#facc15",
+  "text-blue-500": "#3b82f6",
+  "text-purple-500": "#a21caf",
+  "text-orange-500": "#f97316",
+};
+
 // Configuraciones específicas para cada estilo de carácter
 export const CHAR_STYLE_CONFIG = {
   0: { aspectRatio: 0.5, name: "Clásico" }, // Caracteres normales
