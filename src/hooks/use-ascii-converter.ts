@@ -2,7 +2,11 @@
 
 import { useCallback, useRef } from "react";
 import type { AsciiSettings, ColoredPixel } from "../types/ascii";
-import { ASCII_CHARS, CHAR_STYLE_CONFIG, COLOR_OPTIONS } from "../constants/ascii";
+import {
+  ASCII_CHARS,
+  CHAR_STYLE_CONFIG,
+  COLOR_OPTIONS,
+} from "../constants/ascii";
 
 export function useAsciiConverter() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -111,9 +115,7 @@ export function useAsciiConverter() {
       if (!ctx) return;
 
       const colorOption = COLOR_OPTIONS[settings.colorMode];
-      const charConfig =
-        CHAR_STYLE_CONFIG[settings.charSet as keyof typeof CHAR_STYLE_CONFIG] ||
-        CHAR_STYLE_CONFIG[0];
+      const charConfig = CHAR_STYLE_CONFIG[0];
 
       // Configuración del canvas para la descarga
       const fontSize = 25; // Tamaño base de fuente para la imagen
@@ -155,7 +157,7 @@ export function useAsciiConverter() {
         coloredAscii.forEach((row, i) => {
           row.forEach((pixel, j) => {
             ctx.fillStyle = pixel.color;
-            ctx.fillText(pixel.char, j * charWidth , i * lineHeight );
+            ctx.fillText(pixel.char, j * charWidth, i * lineHeight);
           });
         });
       } else {
