@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     siteName: "00Danii",
     images: [
       {
-        url: "https://i.imgur.com/t7SlXqe.png",
+        url: "https://i.imgur.com/UbpWM1h.png",
         // width: 1200,
         // height: 630,
         alt: "Ejemplo de arte ASCII",
