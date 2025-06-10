@@ -4,16 +4,20 @@ import type React from "react";
 
 import { useRef } from "react";
 import { Button } from "@/components/ui/button";
-import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Upload } from "lucide-react";
 
 interface FileUploadProps {
   originalImage: string | null;
   onFileUpload: (file: File) => void;
+  isAsciiDisplay?: boolean;
 }
 
-export function FileUpload({ originalImage, onFileUpload }: FileUploadProps) {
+export function FileUpload({
+  originalImage,
+  onFileUpload,
+  isAsciiDisplay,
+}: FileUploadProps) {
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -24,8 +28,8 @@ export function FileUpload({ originalImage, onFileUpload }: FileUploadProps) {
   };
 
   return (
-    <div className="space-y-3">
-      <div className="relative">
+    <div className="space-y-3 w-full h-full">
+      <div className="relative w-full h-full">
         <Input
           type="file"
           accept="image/*"
@@ -36,7 +40,18 @@ export function FileUpload({ originalImage, onFileUpload }: FileUploadProps) {
         <Button
           onClick={() => fileInputRef.current?.click()}
           variant="outline"
-          className="w-full h-32 border-dashed border-2 border-green-500 bg-green-500/10 hover:bg-green-500/20 text-green-300 hover:text-green-200 transition-all duration-300 flex flex-col gap-2"
+          className={`
+          border-dashed border-2 border-green-500 
+          bg-green-500/10 hover:bg-green-500/20 
+          text-green-300 hover:text-green-200 
+          transition-all duration-300 flex flex-col gap-2
+          ${
+            isAsciiDisplay
+              ? "w-full h-full justify-center items-center"
+              : "w-full h-32"
+          }
+          `}
+          disabled={!!originalImage}
         >
           {originalImage ? (
             <div className="flex flex-col items-center gap-2">

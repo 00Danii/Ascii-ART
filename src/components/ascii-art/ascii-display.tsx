@@ -2,6 +2,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ImageIcon, RefreshCw, Upload } from "lucide-react";
 import type { ColoredPixel } from "@/types/ascii";
 import { COLOR_OPTIONS } from "@/constants/ascii";
+import { FileUpload } from "./file-upload";
 
 interface AsciiDisplayProps {
   originalImage: string | null;
@@ -10,6 +11,7 @@ interface AsciiDisplayProps {
   colorMode: number;
   zoom: number;
   isProcessing: boolean;
+  onFileUpload: (file: File) => void;
 }
 
 export function AsciiDisplay({
@@ -18,6 +20,7 @@ export function AsciiDisplay({
   coloredAscii,
   colorMode,
   zoom,
+  onFileUpload,
   isProcessing,
 }: AsciiDisplayProps) {
   const renderAsciiArt = () => {
@@ -70,19 +73,29 @@ export function AsciiDisplay({
             {renderAsciiArt()}
           </div>
         ) : (
+          // <div
+          //   className="w-full bg-black-800 rounded-lg flex items-center justify-center border-2 border-dashed border-green-700"
+          //   style={{ minHeight: "calc(100vh - 90px)" }}
+          // >
+          //   <div className="text-center text-gray-500">
+          //     <div className="w-20 h-20 mx-auto mb-6  rounded-full flex items-center justify-center">
+          //       <Upload className="w-10 h-10 text-green-500" />
+          //     </div>
+          //     <h3 className="text-xl font-semibold mb-2 text-green-500">
+          //       Sube una imagen
+          //     </h3>
+          //     <p className="text-green-700">El arte ASCII aparecerá aquí</p>
+          //   </div>
+          // </div>
           <div
-            className="w-full bg-black-800 rounded-lg flex items-center justify-center border-2 border-dashed border-green-700"
-            style={{ minHeight: "calc(100vh - 90px)" }}
+            className="w-full h-40 bg-black rounded-lg flex lg:h-[calc(100vh-90px)]"
+            // style={{ minHeight: "calc(100vh - 90px)" }}
           >
-            <div className="text-center text-gray-500">
-              <div className="w-20 h-20 mx-auto mb-6  rounded-full flex items-center justify-center">
-                <Upload className="w-10 h-10 text-green-500" />
-              </div>
-              <h3 className="text-xl font-semibold mb-2 text-green-500">
-                Sube una imagen
-              </h3>
-              <p className="text-green-700">El arte ASCII aparecerá aquí</p>
-            </div>
+            <FileUpload
+              originalImage={originalImage}
+              onFileUpload={onFileUpload}
+              isAsciiDisplay={true}
+            />
           </div>
         )}
       </CardContent>

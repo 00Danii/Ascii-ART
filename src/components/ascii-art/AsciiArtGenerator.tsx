@@ -127,6 +127,7 @@ export default function AsciiArtGenerator() {
               colorMode={settings.colorMode}
               zoom={zoom}
               isProcessing={isProcessing}
+              onFileUpload={handleFileUpload}
             />
 
             {/* Canvas ocultos */}
