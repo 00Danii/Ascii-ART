@@ -104,7 +104,7 @@ export default function AsciiArtGenerator() {
 
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 flex-grow">
           {/* Panel de Controles */}
-          <div className="lg:col-span-1 sticky top-4 self-start">
+          <div className="lg:col-span-1 lg:sticky lg:top-4 lg:self-start">
             <ControlsPanel
               originalImage={originalImage}
               zoom={zoom}
