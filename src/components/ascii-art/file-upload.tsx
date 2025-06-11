@@ -51,7 +51,6 @@ export function FileUpload({
               : "w-full h-32"
           }
           `}
-          disabled={!!originalImage}
         >
           {originalImage ? (
             <div className="flex flex-col items-center gap-2">
