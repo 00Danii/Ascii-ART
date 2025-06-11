@@ -51,15 +51,17 @@ export default function AsciiArtGenerator() {
     );
   };
 
-  const downloadAscii = () => {
-    // const element = document.createElement("a");
-    // const file = new Blob([asciiArt], { type: "text/plain" });
-    // element.href = URL.createObjectURL(file);
-    // element.download = "ascii-art.txt";
-    // document.body.appendChild(element);
-    // element.click();
-    // document.body.removeChild(element);
+  const downloadAsText = () => {
+    const element = document.createElement("a");
+    const file = new Blob([asciiArt], { type: "text/plain" });
+    element.href = URL.createObjectURL(file);
+    element.download = "ascii-art.txt";
+    document.body.appendChild(element);
+    element.click();
+    document.body.removeChild(element);
+  };
 
+  const downloadAsImageMethod = () => {
     downloadAsImage(asciiArt, coloredAscii, settings, zoom);
   };
 
@@ -114,7 +116,8 @@ export default function AsciiArtGenerator() {
               onZoomChange={setZoom}
               onSettingsChange={setSettings}
               onReset={resetSettings}
-              onDownload={downloadAscii}
+              onDownloadAsImage={downloadAsImageMethod}
+              onDownloadAsText={downloadAsText}
             />
           </div>
 

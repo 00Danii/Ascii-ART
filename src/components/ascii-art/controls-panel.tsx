@@ -12,12 +12,18 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Switch } from "@/components/ui/switch";
-import { Download, RotateCcw } from "lucide-react";
+import { Download, FileImage, FileType, RotateCcw } from "lucide-react";
 import { FileUpload } from "./file-upload";
 import { ZoomControl } from "./zoom-control";
 import { ColorSelector } from "./color-selector";
-import type { AsciiSettings } from "@/types/ascii";
+import type { AsciiSettings, ColoredPixel } from "@/types/ascii";
 import { CHAR_SET_NAMES } from "@/constants/ascii";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "../ui/dropdown-menu";
 
 interface ControlsPanelProps {
   originalImage: string | null;
@@ -28,7 +34,8 @@ interface ControlsPanelProps {
   onZoomChange: (zoom: number) => void;
   onSettingsChange: (settings: AsciiSettings) => void;
   onReset: () => void;
-  onDownload: () => void;
+  onDownloadAsText: () => void;
+  onDownloadAsImage: () => void;
 }
 
 export function ControlsPanel({
@@ -40,7 +47,8 @@ export function ControlsPanel({
   onZoomChange,
   onSettingsChange,
   onReset,
-  onDownload,
+  onDownloadAsText,
+  onDownloadAsImage,
 }: ControlsPanelProps) {
   const updateSetting = <K extends keyof AsciiSettings>(
     key: K,
@@ -185,14 +193,40 @@ export function ControlsPanel({
             Reiniciar
           </Button>
 
-          <Button
-            onClick={onDownload}
+          {/* <Button
+            onClick={() => {}}
             className="w-full border border-green-500 bg-green-500/10 hover:bg-green-500/20 text-green-300 hover:text-green-200 transition-all duration-300"
             disabled={!asciiArt || !originalImage}
           >
             <Download className="w-4 h-4 mr-2" />
             Descargar
-          </Button>
+          </Button> */}
+
+          <DropdownMenu>
+            <DropdownMenuTrigger
+              className=" inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] shadow-xs h-9 px-4 py-2 has-[>svg]:px-3 w-full border border-green-500 bg-green-500/10 hover:bg-green-500/20 text-green-300 hover:text-green-200 transition-all duration-300"
+              disabled={!asciiArt || !originalImage}
+            >
+              <Download className="w-4 h-4 mr-2" />
+              Descargar
+            </DropdownMenuTrigger>
+            <DropdownMenuContent className="bg-black border border-green-500 text-green-500">
+              <DropdownMenuItem
+                className="focus:bg-zinc-800 focus:text-green-500"
+                onClick={onDownloadAsImage}
+              >
+                <FileImage className="text-green-500" />
+                Imagen
+              </DropdownMenuItem>
+              <DropdownMenuItem
+                className="focus:bg-zinc-800 focus:text-green-500"
+                onClick={onDownloadAsText}
+              >
+                <FileType className="text-green-500" />
+                Texto
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
         </div>
       </CardContent>
     </Card>
