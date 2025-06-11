@@ -88,7 +88,7 @@ export function AsciiDisplay({
           //   </div>
           // </div>
           <div
-            className="w-full h-40 bg-black rounded-lg flex lg:h-[calc(100vh-90px)]"
+            className="w-full h-4 bg-black rounded-lg flex lg:h-[calc(100vh-90px)]"
             // style={{ minHeight: "calc(100vh - 90px)" }}
           >
             <FileUpload
