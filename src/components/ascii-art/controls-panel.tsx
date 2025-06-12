@@ -24,6 +24,16 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "../ui/dropdown-menu";
+import {
+  Dialog,
+  DialogClose,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "../ui/dialog";
 
 interface ControlsPanelProps {
   originalImage: string | null;
@@ -184,14 +194,54 @@ export function ControlsPanel({
 
         {/* Botones */}
         <div className="space-y-3 pt-4 grid grid-cols-2 gap-2">
-          <Button
+          {/* <Button
             onClick={onReset}
             variant="outline"
             className="w-full bg-black border-green-500 text-green-500 hover:bg-black hover:text-green-300 transition-all duration-300"
           >
             <RotateCcw className="w-4 h-4 mr-2" />
             Reiniciar
-          </Button>
+          </Button> */}
+
+          <Dialog>
+            <DialogTrigger className=" inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] shadow-xs h-9 px-4 py-2 has-[>svg]:px-3 w-full border bg-black border-green-500 text-green-500 hover:bg-black hover:text-green-300 transition-all duration-300">
+              <RotateCcw className="w-4 h-4 mr-2" />
+              Reiniciar
+            </DialogTrigger>
+            <DialogContent className="bg-black border border-green-500">
+              <DialogHeader>
+                <DialogTitle className="text-green-500">
+                  ¿Estás seguro de que deseas reiniciar?
+                </DialogTitle>
+                <DialogDescription className="text-green-400">
+                  Esta acción borrará tu progreso y no podrá deshacerse.
+                </DialogDescription>
+              </DialogHeader>
+
+              <DialogFooter className="">
+                <DialogClose asChild>
+                  <Button
+                    type="button"
+                    variant="ghost"
+                    className=" bg-black border-green-500 text-green-500 hover:bg-black hover:text-green-300 transition-all duration-300"
+                  >
+                    Cancelar
+                  </Button>
+                </DialogClose>
+
+                <DialogClose>
+                  <Button
+                    type="button"
+                    variant="outline"
+                    className=" bg-black border-green-500 text-green-500 hover:bg-black hover:text-green-300 transition-all duration-300"
+                    onClick={onReset}
+                  >
+                    Aceptar
+                  </Button>
+                </DialogClose>
+              </DialogFooter>
+            </DialogContent>
+          </Dialog>
 
           {/* <Button
             onClick={() => {}}
