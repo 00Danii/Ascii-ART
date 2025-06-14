@@ -69,6 +69,7 @@ export const COLOR_OPTIONS: ColorOption[] = [
   { name: "Azul", value: "text-blue-500", bg: "bg-black" },
   { name: "Púrpura", value: "text-purple-500", bg: "bg-black" },
   { name: "Naranja", value: "text-orange-500", bg: "bg-black" },
+  { name: "Rojo", value: "text-red-500", bg: "bg-black" },
   { name: "Tonos Originales", value: "original", bg: "bg-black" },
 ];
 
@@ -82,6 +83,7 @@ export const COLOR_HEX_MAP: Record<string, string> = {
   "text-blue-500": "#3b82f6",
   "text-purple-500": "#a21caf",
   "text-orange-500": "#f97316",
+  "text-red-500": "#ff0000",
 };
 
 // Configuraciones específicas para cada estilo de carácter
