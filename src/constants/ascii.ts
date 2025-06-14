@@ -11,12 +11,24 @@ export const ASCII_CHARS = [
   // " ◦•◘○●◉⬢⬣⬡", // Círculos y Formas
   " ┌┐└┘│─┼┤├┬┴╭╮╯╰║═╬╣╠╦╩", // Líneas y Marcos
   // " ∙∘○◯●◉⚫⚪", // Puntos Geométricos
-  // " ▁▂▃▄▅▆▇█", // Barras Verticales
+
   " ╱╲╳▲▼◄►♦♠♣♥", // Símbolos Especiales
   // " ⟨⟩⟪⟫⟬⟭⟮⟯⟰⟱", // Matemáticos
   " ░▒▓█▀▄▌▐■□▪▫", // Bloques Avanzados
-  " ♥♥♥",
+  " ♥♥♥", // Corazones
   " 0123456789", // Números
+
+  // "あいうえおかきくけこさしすせそ", // Hiragana
+  // "アイウエオカキクケコサシスセソ", // Katakana
+  // "一二三四五六七八九十月火水木金土日", // Kanji Básicos
+  // "龍虎鳥魚山川雨雪花風月星空海", // Kanji Naturales
+  // "人女男子力口目耳手足心", // Kanji Cuerpo
+  // "ｰｦｧｨｩｪｫｬｭｮｯｱｲｳｴｵｶｷｸｹｺｻｼｽｾｿ", // Half-width Kana
+  // "「」『』【】〒〓〔〕〖〗〘〙〚〛", // Símbolos Japoneses
+  // "☀☁☂☃★☆☉☊☋☌☍☎☏☐☑☒☓", // Símbolos Misceláneos
+  // "👾👽🤖👻💀☠️👹👺🎭🦄", // Emojis
+
+  "ｰｱｲｺｻｼｽｾ", // Half-width Kana
 ];
 
 export const CHAR_SET_NAMES = [
@@ -36,6 +48,15 @@ export const CHAR_SET_NAMES = [
   "Bloques Avanzados",
   "Corazones",
   "Números",
+
+  // "Hiragana",
+  // "Katana",
+  // "Kanji Basicos",
+  // "Kanji Naturales",
+  // "Kanji Cuerpo",
+  // "Half-width Kana",
+  // "Símbolos Japoneses",
+  "ｱｲｸｹｺｻｼｽｾｿ",
 ];
 
 export const COLOR_OPTIONS: ColorOption[] = [
@@ -66,4 +87,5 @@ export const COLOR_HEX_MAP: Record<string, string> = {
 // Configuraciones específicas para cada estilo de carácter
 export const CHAR_STYLE_CONFIG = {
   0: { aspectRatio: 0.5, name: "Clásico" }, // Caracteres normales
+  12: { aspectRatio: 0.8, name: "Kanji Basicos" },
 };
