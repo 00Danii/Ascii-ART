@@ -197,6 +197,9 @@ export function useAsciiConverter() {
           case "text-orange-500":
             textColor = "#fb923c";
             break;
+          case "text-red-500":
+            textColor = "#fb2c36";
+            break;
         }
 
         ctx.fillStyle = textColor;

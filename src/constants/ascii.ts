@@ -83,7 +83,7 @@ export const COLOR_HEX_MAP: Record<string, string> = {
   "text-blue-500": "#3b82f6",
   "text-purple-500": "#a21caf",
   "text-orange-500": "#f97316",
-  "text-red-500": "#ff0000",
+  "text-red-500": "#fb2c36",
 };
 
 // Configuraciones específicas para cada estilo de carácter
