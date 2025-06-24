@@ -3,7 +3,7 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "ASCII - ART",
-  description: "Generador de arte ASCII - Danii",
+  description: "Generador de arte ASCII - Hecho con ♥ por Danii",
   openGraph: {
     title: "ASCII - ART",
     description: "Generador de arte ASCII - Hecho con ♥ por Danii",
