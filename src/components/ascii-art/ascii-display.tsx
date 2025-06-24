@@ -3,6 +3,7 @@ import { ImageIcon, RefreshCw, Upload } from "lucide-react";
 import type { ColoredPixel } from "@/types/ascii";
 import { COLOR_OPTIONS } from "@/constants/ascii";
 import { FileUpload } from "./file-upload";
+import { AsciiCanvasDisplay } from "./AsciiDisplayCanvas";
 
 interface AsciiDisplayProps {
   originalImage: string | null;
@@ -36,19 +37,14 @@ export function AsciiDisplay({
       fontSize: "0.5rem",
     };
 
-    if (colorOption.value === "original" && coloredAscii.length > 0) {
+    if (colorOption.value === "original") {
       return (
-        <div className="font-mono whitespace-pre" style={charStyle}>
-          {coloredAscii.map((row, i) => (
-            <div key={i} className="flex flex-nowrap">
-              {row.map((pixel, j) => (
-                <span key={j} style={{ color: pixel.color }}>
-                  {pixel.char}
-                </span>
-              ))}
-            </div>
-          ))}
-        </div>
+        <AsciiCanvasDisplay
+          coloredAscii={coloredAscii}
+          zoom={zoom}
+          fontSize={25}
+          
+        />
       );
     }
 
