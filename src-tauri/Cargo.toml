@@ -1,8 +1,8 @@
 [package]
-name = "app"
+name = "Ascii-ART"
 version = "0.1.0"
-description = "A Tauri App"
-authors = ["you"]
+description = "Aplicacion para generacion de arte ASCII"
+authors = ["Danii"]
 license = ""
 repository = ""
 edition = "2021"
