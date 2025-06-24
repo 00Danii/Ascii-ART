@@ -89,21 +89,6 @@ export default function AsciiArtGenerator() {
   return (
     <div className="min-h-screen bg-black p-4 flex flex-col">
       <div className="max-w-7xl mx-auto w-full flex-grow flex flex-col">
-        {/* Header */}
-        {/* <div className="text-center mb-6">
-          <div className="inline-flex items-center gap-3 mb-2">
-            <div className="p-2  rounded-full">
-              <Code className="w-6 h-6 text-white" />
-            </div>
-            <h1 className="text-3xl md:text-4xl font-bold text-white">
-              ASCII Art Generator
-            </h1>
-          </div>
-          <p className="text-gray-400 text-sm md:text-base">
-            Convierte tus imágenes en arte ASCII personalizable
-          </p>
-        </div> */}
-
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 flex-grow">
           {/* Panel de Controles */}
           <div className="lg:col-span-1 lg:sticky lg:top-4 lg:self-start">

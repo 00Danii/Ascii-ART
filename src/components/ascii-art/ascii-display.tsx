@@ -1,5 +1,4 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { ImageIcon, RefreshCw, Upload } from "lucide-react";
+import { Card, CardContent } from "@/components/ui/card";
 import type { ColoredPixel } from "@/types/ascii";
 import { COLOR_OPTIONS } from "@/constants/ascii";
 import { FileUpload } from "./file-upload";
@@ -43,7 +42,6 @@ export function AsciiDisplay({
           coloredAscii={coloredAscii}
           zoom={zoom}
           fontSize={25}
-          
         />
       );
     }
@@ -69,24 +67,7 @@ export function AsciiDisplay({
             {renderAsciiArt()}
           </div>
         ) : (
-          // <div
-          //   className="w-full bg-black-800 rounded-lg flex items-center justify-center border-2 border-dashed border-green-700"
-          //   style={{ minHeight: "calc(100vh - 90px)" }}
-          // >
-          //   <div className="text-center text-gray-500">
-          //     <div className="w-20 h-20 mx-auto mb-6  rounded-full flex items-center justify-center">
-          //       <Upload className="w-10 h-10 text-green-500" />
-          //     </div>
-          //     <h3 className="text-xl font-semibold mb-2 text-green-500">
-          //       Sube una imagen
-          //     </h3>
-          //     <p className="text-green-700">El arte ASCII aparecerá aquí</p>
-          //   </div>
-          // </div>
-          <div
-            className="w-full h-4 bg-black rounded-lg flex lg:h-[calc(100vh-90px)]"
-            // style={{ minHeight: "calc(100vh - 90px)" }}
-          >
+          <div className="w-full h-4 bg-black rounded-lg flex lg:h-[calc(100vh-90px)]">
             <FileUpload
               originalImage={originalImage}
               onFileUpload={onFileUpload}

@@ -16,7 +16,7 @@ import { Download, FileImage, FileType, RotateCcw } from "lucide-react";
 import { FileUpload } from "./file-upload";
 import { ZoomControl } from "./zoom-control";
 import { ColorSelector } from "./color-selector";
-import type { AsciiSettings, ColoredPixel } from "@/types/ascii";
+import type { AsciiSettings } from "@/types/ascii";
 import { CHAR_SET_NAMES } from "@/constants/ascii";
 import {
   DropdownMenu,
@@ -69,28 +69,8 @@ export function ControlsPanel({
 
   return (
     <Card className="bg-black border-green-500">
-      {/* <CardHeader className="pb-4">
-        <CardTitle className="flex items-center gap-2 text-white">
-          Controles
-        </CardTitle>
-      </CardHeader> */}
       <CardContent className="space-y-6">
         <FileUpload originalImage={originalImage} onFileUpload={onFileUpload} />
-
-        {/* Info de proporción */}
-        {/* {originalImage && (
-          <div className="bg-gray-800 p-3 rounded-lg">
-            <Label className="text-gray-300 text-sm">Proporción Original</Label>
-            <p className="text-green-400 font-mono text-sm">
-              {imageAspectRatio > 1
-                ? "Vertical"
-                : imageAspectRatio < 1
-                ? "Horizontal"
-                : "Cuadrada"}{" "}
-              ({imageAspectRatio.toFixed(2)})
-            </p>
-          </div>
-        )} */}
 
         {/* Resolución */}
         <div className="space-y-3">
@@ -192,17 +172,9 @@ export function ControlsPanel({
           />
         </div>
 
-        {/* Botones */}
+        {/* Botones - Reiniciar y Descarga */}
         <div className="space-y-3 pt-4 grid grid-cols-2 gap-2">
-          {/* <Button
-            onClick={onReset}
-            variant="outline"
-            className="w-full bg-black border-green-500 text-green-500 hover:bg-black hover:text-green-300 transition-all duration-300"
-          >
-            <RotateCcw className="w-4 h-4 mr-2" />
-            Reiniciar
-          </Button> */}
-
+          {/* Reiniciar */}
           <Dialog>
             <DialogTrigger className=" inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] shadow-xs h-9 px-4 py-2 has-[>svg]:px-3 w-full border bg-black border-green-500 text-green-500 hover:bg-black hover:text-green-300 duration-300">
               <RotateCcw className="w-4 h-4 mr-2" />
@@ -243,15 +215,7 @@ export function ControlsPanel({
             </DialogContent>
           </Dialog>
 
-          {/* <Button
-            onClick={() => {}}
-            className="w-full border border-green-500 bg-green-500/10 hover:bg-green-500/20 text-green-300 hover:text-green-200 transition-all duration-300"
-            disabled={!asciiArt || !originalImage}
-          >
-            <Download className="w-4 h-4 mr-2" />
-            Descargar
-          </Button> */}
-
+          {/* Descarga */}
           <DropdownMenu>
             <DropdownMenuTrigger
               className=" inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] shadow-xs h-9 px-4 py-2 has-[>svg]:px-3 w-full border border-green-500 bg-green-500/10 hover:bg-green-500/20 text-green-300 hover:text-green-200 transition-all duration-300"
