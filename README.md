@@ -65,5 +65,5 @@ Hecho con ♥ por Danii.
 ```bash
 git clone https://github.com/00Danii/ascii-art.git
 cd ascii-art
-npm install
-npm run dev
+pnpm install
+pnpm dev
