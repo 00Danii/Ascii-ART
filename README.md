@@ -1,7 +1,10 @@
 # Ascii-ART
 
-### ¡Convierte imágenes en arte ASCII!  
-Ascii-ART es una aplicación moderna y visualmente atractiva para transformar cualquier imagen en arte ASCII, con soporte para colores, descarga y personalización avanzada. 
+![Ejemplo de arte ASCII](icon.png)
+
+### ¡Convierte imágenes en arte ASCII!
+
+Ascii-ART es una aplicación moderna y visualmente atractiva para transformar cualquier imagen en arte ASCII, con soporte para colores, descarga y personalización avanzada.
 
 Hecho con ♥ por Danii.
 
@@ -15,13 +18,13 @@ Hecho con ♥ por Danii.
 - Ajusta resolución, contraste, brillo, tipo de caracteres y más.
 - Interfaz moderna.
 - Modo oscuro y diseño responsive.
-- Integración con Tauri para escritorio.
+- Integración con Tauri para versión de escritorio.
 
 ---
 
 ## 🖼️ Ejemplo
 
-![Ejemplo de arte ASCII](icon.png)
+![[Ejemplo de arte ASCII]](https://i.imgur.com/XywiOnR.png)
 
 ---
 
@@ -34,13 +37,28 @@ Hecho con ♥ por Danii.
 
 ---
 
-## 🛠️ Instalación y uso
+## 📦 Descargas
+
+### Aplicación Web  
+[ascii-art.vercel.app](https://ascii-art-zeta.vercel.app/) — ¡Úsala directamente desde el navegador!
+
+### Versión de Escritorio
+
+- 🔹 [Portable (.exe)](https://github.com/00Danii/Ascii-ART/releases/download/windows-portable/Ascii-ART.exe)
+- 🔹 [Instalador (.exe)](https://github.com/00Danii/Ascii-ART/releases/download/windows-exe-instalador/ascii_art_setup.exe)
+- 🔹 [Instalador (.msi)](https://github.com/00Danii/Ascii-ART/releases/download/windows-msi-instalador/ascii_art.msi)
+
+> Puedes encontrar todas las versiones en la sección de [Releases](https://github.com/00Danii/Ascii-ART/releases).
+
+---
+
+## 🛠️ Instalación y uso (modo desarrollo)
 
 ### Requisitos
 
 - Node.js 18+
 - pnpm, npm o yarn
-- (Opcional) Rust y Tauri para la app de escritorio
+- (Opcional) Rust y Tauri para generar la app de escritorio
 
 ### Instalación
 
@@ -48,3 +66,4 @@ Hecho con ♥ por Danii.
 git clone https://github.com/00Danii/ascii-art.git
 cd ascii-art
 npm install
+npm run dev
