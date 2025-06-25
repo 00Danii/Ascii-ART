@@ -24,7 +24,7 @@ Hecho con ♥ por Danii.
 
 ## 🖼️ Ejemplo
 
-![[Ejemplo de arte ASCII]](https://i.imgur.com/XywiOnR.png)
+![Ejemplo de arte ASCII](https://i.imgur.com/XywiOnR.png)
 
 ---
 
@@ -42,7 +42,7 @@ Hecho con ♥ por Danii.
 ### Aplicación Web  
 [ascii-art.vercel.app](https://ascii-art-zeta.vercel.app/) — ¡Úsala directamente desde el navegador!
 
-### Versión de Escritorio
+### Versión de Escritorio Windows
 
 - 🔹 [Portable (.exe)](https://github.com/00Danii/Ascii-ART/releases/download/windows-portable/Ascii-ART.exe)
 - 🔹 [Instalador (.exe)](https://github.com/00Danii/Ascii-ART/releases/download/windows-exe-instalador/ascii_art_setup.exe)
