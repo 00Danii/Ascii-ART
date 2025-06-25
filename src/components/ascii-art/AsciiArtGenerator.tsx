@@ -5,6 +5,7 @@ import { ControlsPanel } from "./controls-panel";
 import { AsciiDisplay } from "./ascii-display";
 import { useAsciiConverter } from "@/hooks/use-ascii-converter";
 import type { AsciiSettings, ColoredPixel } from "@/types/ascii";
+import { MobileBottomControls } from "./mobile-controls";
 
 export default function AsciiArtGenerator() {
   const [originalImage, setOriginalImage] = useState<string | null>(null);
@@ -90,8 +91,8 @@ export default function AsciiArtGenerator() {
     <div className="min-h-screen bg-black p-4 flex flex-col">
       <div className="max-w-7xl mx-auto w-full flex-grow flex flex-col">
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 flex-grow">
-          {/* Panel de Controles */}
-          <div className="lg:col-span-1 lg:sticky lg:top-4 lg:self-start">
+          {/* Panel de Controles solo visible en desktop */}
+          <div className="lg:col-span-1 lg:sticky lg:top-4 lg:self-start hidden lg:block">
             <ControlsPanel
               originalImage={originalImage}
               zoom={zoom}
@@ -122,6 +123,20 @@ export default function AsciiArtGenerator() {
             <canvas ref={canvasRef} className="hidden" />
             <canvas ref={downloadCanvasRef} className="hidden" />
           </div>
+
+          {/* Controles móviles en la parte inferior */}
+          <MobileBottomControls
+            originalImage={originalImage}
+            zoom={zoom}
+            settings={settings}
+            asciiArt={asciiArt}
+            onFileUpload={handleFileUpload}
+            onZoomChange={setZoom}
+            onSettingsChange={setSettings}
+            onReset={resetSettings}
+            onDownloadAsImage={downloadAsImageMethod}
+            onDownloadAsText={downloadAsText}
+          />
         </div>
       </div>
     </div>
