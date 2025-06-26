@@ -67,7 +67,7 @@ export function AsciiDisplay({
             {renderAsciiArt()}
           </div>
         ) : (
-          <div className="w-full h-4 bg-black rounded-lg flex lg:h-[calc(100vh-90px)]">
+          <div className="w-full  h-[calc(100vh-170px)] flex bg-black rounded-lg lg:h-[calc(100vh-90px)]">
             <FileUpload
               originalImage={originalImage}
               onFileUpload={onFileUpload}
