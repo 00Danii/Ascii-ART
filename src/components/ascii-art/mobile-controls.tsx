@@ -118,12 +118,12 @@ export function MobileBottomControls({
       label: "Resolución",
       color: "text-green-400",
     },
-    {
-      id: "zoom",
-      icon: <ZoomIn className="w-5 h-5" />,
-      label: "Zoom",
-      color: "text-cyan-400",
-    },
+    // {
+    //   id: "zoom",
+    //   icon: <ZoomIn className="w-5 h-5" />,
+    //   label: "Zoom",
+    //   color: "text-cyan-400",
+    // },
     {
       id: "contrast",
       icon: <Contrast className="w-5 h-5" />,
@@ -231,25 +231,25 @@ export function MobileBottomControls({
           </div>
         );
 
-      case "zoom":
-        return (
-          <div className="space-y-4">
-            <div className="flex justify-between items-center">
-              <Label className="text-green-300">Zoom</Label>
-              <span className="text-green-300 font-mono text-sm">
-                {(zoom * 100).toFixed(0)}%
-              </span>
-            </div>
-            <Slider
-              value={[zoom]}
-              onValueChange={(value) => onZoomChange(value[0])}
-              max={2}
-              min={0.5}
-              step={0.1}
-              className="[&_[role=slider]]:bg-green-500 [&_[role=slider]]:border-0"
-            />
-          </div>
-        );
+      // case "zoom":
+      //   return (
+      //     <div className="space-y-4">
+      //       <div className="flex justify-between items-center">
+      //         <Label className="text-green-300">Zoom</Label>
+      //         <span className="text-green-300 font-mono text-sm">
+      //           {(zoom * 100).toFixed(0)}%
+      //         </span>
+      //       </div>
+      //       <Slider
+      //         value={[zoom]}
+      //         onValueChange={(value) => onZoomChange(value[0])}
+      //         max={2}
+      //         min={0.5}
+      //         step={0.1}
+      //         className="[&_[role=slider]]:bg-green-500 [&_[role=slider]]:border-0"
+      //       />
+      //     </div>
+      //   );
 
       case "contrast":
         return (
@@ -340,7 +340,7 @@ export function MobileBottomControls({
                 "style",
                 "color",
                 "resolution",
-                "zoom",
+                // "zoom",
                 "contrast",
                 "brightness",
               ].includes(control.id) && (
