@@ -130,19 +130,9 @@ export function AsciiDisplay({
   onZoomChange,
 }: AsciiDisplayProps) {
   const { gestureRef, isGestureActive } = useTouchGestures(onZoomChange, zoom);
-  const [showZoomHint, setShowZoomHint] = useState(false);
   const [offset, setOffset] = useState({ x: 0, y: 0 });
   const [dragging, setDragging] = useState(false);
   const [lastPos, setLastPos] = useState<{ x: number; y: number } | null>(null);
-
-  // Mostrar hint de zoom cuando hay imagen
-  useEffect(() => {
-    if (originalImage && asciiArt) {
-      setShowZoomHint(true);
-      const timer = setTimeout(() => setShowZoomHint(false), 3000);
-      return () => clearTimeout(timer);
-    }
-  }, [originalImage, asciiArt]);
 
   const handleMouseDown = (e: React.MouseEvent) => {
     setDragging(true);
@@ -224,36 +214,7 @@ export function AsciiDisplay({
     <Card className="bg-black-900 border-green-500 flex-grow">
       <CardContent className="flex-grow">
         {originalImage && asciiArt ? (
-          // <div
-          //   className={`w-full h-full ${COLOR_OPTIONS[colorMode].bg} rounded-lg flex items-center justify-center overflow-auto`}
-          //   style={{ minHeight: "calc(100vh - 250px)" }}
-          // >
-          //   {renderAsciiArt()}
-          // </div>
-
           <div className="relative">
-            {/* Hint de gestos táctiles */}
-            {showZoomHint && (
-              <div className="absolute top-4 left-1/2 transform -translate-x-1/2 bg-gray-800/90 backdrop-blur-sm text-white text-sm px-4 py-2 rounded-lg z-10 animate-fade-in lg:hidden">
-                <div className="flex items-center gap-2">
-                  <span className="text-2xl">🤏</span>
-                  <span>Pellizca para zoom</span>
-                  <span className="text-2xl">👆👆</span>
-                  <span>Doble tap</span>
-                </div>
-              </div>
-            )}
-
-            {/* Indicador de gesto activo */}
-            {isGestureActive && (
-              <div className="absolute top-4 right-4 bg-cyan-500/20 backdrop-blur-sm text-cyan-400 text-sm px-3 py-2 rounded-lg z-10 border border-cyan-500/30">
-                <div className="flex items-center gap-2">
-                  <div className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse"></div>
-                  Zoom activo
-                </div>
-              </div>
-            )}
-
             <div
               ref={gestureRef}
               className={`w-full h-full ${
