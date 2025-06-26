@@ -81,6 +81,12 @@ export default function AsciiArtGenerator() {
     setColoredAscii([]);
   };
 
+  // Función para manejar cambios de zoom desde gestos táctiles
+  const handleZoomChange = (newZoom: number) => {
+    const clampedZoom = Math.min(Math.max(newZoom, 0.5), 2);
+    setZoom(clampedZoom);
+  };
+
   useEffect(() => {
     if (originalImage) {
       processImage(originalImage);
@@ -99,7 +105,7 @@ export default function AsciiArtGenerator() {
               settings={settings}
               asciiArt={asciiArt}
               onFileUpload={handleFileUpload}
-              onZoomChange={setZoom}
+              onZoomChange={handleZoomChange}
               onSettingsChange={setSettings}
               onReset={resetSettings}
               onDownloadAsImage={downloadAsImageMethod}
@@ -117,6 +123,7 @@ export default function AsciiArtGenerator() {
               zoom={zoom}
               isProcessing={isProcessing}
               onFileUpload={handleFileUpload}
+              onZoomChange={handleZoomChange}
             />
 
             {/* Canvas ocultos */}
@@ -131,7 +138,7 @@ export default function AsciiArtGenerator() {
             settings={settings}
             asciiArt={asciiArt}
             onFileUpload={handleFileUpload}
-            onZoomChange={setZoom}
+            onZoomChange={handleZoomChange}
             onSettingsChange={setSettings}
             onReset={resetSettings}
             onDownloadAsImage={downloadAsImageMethod}
