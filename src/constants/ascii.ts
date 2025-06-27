@@ -60,7 +60,7 @@ export const CHAR_SET_NAMES = [
 ];
 
 export const COLOR_OPTIONS: ColorOption[] = [
-  { name: "Verde Terminal", value: "text-green-500", bg: "bg-black" },
+  { name: "Verde", value: "text-green-500", bg: "bg-black" },
   { name: "Rosa", value: "text-pink-500", bg: "bg-black" },
   { name: "Blanco", value: "text-white", bg: "bg-black" },
   { name: "Gris", value: "text-gray-300", bg: "bg-black" },
