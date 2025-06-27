@@ -33,8 +33,8 @@ export function AsciiCanvasDisplay({
     const ctx = canvasRef.current.getContext("2d");
     if (!ctx) return;
 
-    const width = cols * charW;
-    const height = rows * charH;
+    const width = window.innerWidth;
+    const height = window.innerHeight;
     canvasRef.current.width = width;
     canvasRef.current.height = height;
 
@@ -109,8 +109,10 @@ export function AsciiCanvasDisplay({
     <canvas
       ref={canvasRef}
       style={{
-        width: `${cols * charW}px`,
-        height: `${rows * charH}px`,
+        // width: `${cols * charW}px`,
+        // height: `${rows * charH}px`,
+        width: "w-full",
+        height: "h-full",
         background: "#000",
         display: "block",
         touchAction: "none",
