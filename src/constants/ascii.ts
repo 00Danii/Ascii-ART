@@ -61,8 +61,9 @@ export const CHAR_SET_NAMES = [
 
 export const COLOR_OPTIONS: ColorOption[] = [
   { name: "Verde", value: "text-green-500", bg: "bg-black" },
-  { name: "Rosa", value: "text-pink-500", bg: "bg-black" },
   { name: "Blanco", value: "text-white", bg: "bg-black" },
+  { name: "Negro", value: "text-black", bg: "bg-white" },
+  { name: "Rosa", value: "text-pink-500", bg: "bg-black" },
   { name: "Gris", value: "text-gray-300", bg: "bg-black" },
   { name: "Cyan", value: "text-cyan-400", bg: "bg-black" },
   { name: "Amarillo", value: "text-yellow-400", bg: "bg-black" },
@@ -84,6 +85,7 @@ export const COLOR_HEX_MAP: Record<string, string> = {
   "text-purple-500": "#a21caf",
   "text-orange-500": "#f97316",
   "text-red-500": "#fb2c36",
+  "text-black": "#000000",
 };
 
 // Configuraciones específicas para cada estilo de carácter

@@ -200,6 +200,9 @@ export function useAsciiConverter() {
           case "text-red-500":
             textColor = "#fb2c36";
             break;
+          case "text-black":
+            textColor = "#000000";
+            break;
         }
 
         ctx.fillStyle = textColor;
