@@ -7,6 +7,14 @@ type AsciiCanvasDisplayProps = {
   fontSize?: number;
   fontFamily?: string;
   offset?: { x: number; y: number };
+  dragging?: boolean;
+  onMouseDown?: (e: React.MouseEvent) => void;
+  onMouseUp?: (e: React.MouseEvent) => void;
+  onMouseLeave?: (e: React.MouseEvent) => void;
+  onMouseMove?: (e: React.MouseEvent) => void;
+  onTouchStart?: (e: React.TouchEvent) => void;
+  onTouchEnd?: (e: React.TouchEvent) => void;
+  onTouchMove?: (e: React.TouchEvent) => void;
 };
 
 export function AsciiCanvasDisplay({
@@ -14,13 +22,17 @@ export function AsciiCanvasDisplay({
   zoom = 1,
   fontSize = 25,
   fontFamily = "monospace",
+  offset = { x: 0, y: 0 },
+  dragging = false,
+  onMouseDown,
+  onMouseUp,
+  onMouseLeave,
+  onMouseMove,
+  onTouchStart,
+  onTouchEnd,
+  onTouchMove,
 }: AsciiCanvasDisplayProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-
-  // Estado para panning
-  const [offset, setOffset] = useState({ x: 0, y: 0 });
-  const [dragging, setDragging] = useState(false);
-  const [lastPos, setLastPos] = useState<{ x: number; y: number } | null>(null);
 
   const charW = fontSize * 0.6 * zoom;
   const charH = fontSize * 0.5 * zoom;
@@ -63,48 +75,6 @@ export function AsciiCanvasDisplay({
     offset,
   ]);
 
-  // Mouse events para panning
-  const handleMouseDown = (e: React.MouseEvent) => {
-    setDragging(true);
-    setLastPos({ x: e.clientX, y: e.clientY });
-  };
-  const handleMouseUp = () => {
-    setDragging(false);
-    setLastPos(null);
-  };
-  const handleMouseMove = (e: React.MouseEvent) => {
-    if (!dragging || !lastPos) return;
-    const dx = e.clientX - lastPos.x;
-    const dy = e.clientY - lastPos.y;
-    setOffset((prev) => ({
-      x: prev.x + dx,
-      y: prev.y + dy,
-    }));
-    setLastPos({ x: e.clientX, y: e.clientY });
-  };
-
-  // Touch events para panning
-  const handleTouchStart = (e: React.TouchEvent) => {
-    if (e.touches.length === 1) {
-      setDragging(true);
-      setLastPos({ x: e.touches[0].clientX, y: e.touches[0].clientY });
-    }
-  };
-  const handleTouchEnd = () => {
-    setDragging(false);
-    setLastPos(null);
-  };
-  const handleTouchMove = (e: React.TouchEvent) => {
-    if (!dragging || !lastPos || e.touches.length !== 1) return;
-    const dx = e.touches[0].clientX - lastPos.x;
-    const dy = e.touches[0].clientY - lastPos.y;
-    setOffset((prev) => ({
-      x: prev.x + dx,
-      y: prev.y + dy,
-    }));
-    setLastPos({ x: e.touches[0].clientX, y: e.touches[0].clientY });
-  };
-
   return (
     <canvas
       ref={canvasRef}
@@ -118,13 +88,13 @@ export function AsciiCanvasDisplay({
         touchAction: "none",
         cursor: dragging ? "grabbing" : "grab",
       }}
-      onMouseDown={handleMouseDown}
-      onMouseUp={handleMouseUp}
-      onMouseLeave={handleMouseUp}
-      onMouseMove={handleMouseMove}
-      onTouchStart={handleTouchStart}
-      onTouchEnd={handleTouchEnd}
-      onTouchMove={handleTouchMove}
+      onMouseDown={onMouseDown}
+      onMouseUp={onMouseUp}
+      onMouseLeave={onMouseLeave}
+      onMouseMove={onMouseMove}
+      onTouchStart={onTouchStart}
+      onTouchEnd={onTouchEnd}
+      onTouchMove={onTouchMove}
     />
   );
 }

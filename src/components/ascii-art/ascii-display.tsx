@@ -196,6 +196,14 @@ export function AsciiDisplay({
           zoom={zoom}
           fontSize={25}
           offset={offset}
+          dragging={dragging}
+          onMouseDown={handleMouseDown}
+          onMouseUp={handleMouseUp}
+          onMouseLeave={handleMouseUp}
+          onMouseMove={handleMouseMove}
+          onTouchStart={handleTouchStart}
+          onTouchEnd={handleTouchEnd}
+          onTouchMove={handleTouchMove}
         />
       );
     }
