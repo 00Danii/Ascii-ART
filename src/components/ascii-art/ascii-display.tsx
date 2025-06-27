@@ -219,7 +219,7 @@ export function AsciiDisplay({
   };
 
   return (
-    <Card className="bg-black-900 border-green-500 flex-grow">
+    <Card className="bg-black border-green-500 flex-grow">
       <CardContent className="flex-grow">
         {originalImage && asciiArt ? (
           <div className="relative">
