@@ -24,15 +24,15 @@ export function ZoomControl({ zoom, onZoomChange }: ZoomControlProps) {
           size="icon"
           variant="outline"
           className="bg-black border-green-700 text-green-200 hover:bg-black hover:text-green-300"
-          onClick={() => onZoomChange(Math.max(0.5, zoom - 0.1))}
+          onClick={() => onZoomChange(Math.max(0.1, zoom - 0.1))}
         >
           <ZoomOut className="w-4 h-4" />
         </Button>
         <Slider
           value={[zoom]}
-          onValueChange={(value) => onZoomChange(value[0])}
+          onValueChange={(value) => onZoomChange(Math.max(0.1, value[0]))}
           max={2}
-          min={0.5}
+          min={0.1}
           step={0.1}
           className="flex-1 [&_[role=slider]]:bg-green-500 [&_[role=slider]]:border-0"
         />
@@ -40,7 +40,7 @@ export function ZoomControl({ zoom, onZoomChange }: ZoomControlProps) {
           size="icon"
           variant="outline"
           className="bg-black border-green-700 text-green-200 hover:bg-black hover:text-green-300"
-          onClick={() => onZoomChange(Math.min(2, zoom + 0.1))}
+          onClick={() => onZoomChange(Math.min(2, Math.max(0.1, zoom + 0.1)))}
         >
           <ZoomIn className="w-4 h-4" />
         </Button>

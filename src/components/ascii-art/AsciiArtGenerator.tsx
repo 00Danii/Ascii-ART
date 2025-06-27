@@ -83,7 +83,7 @@ export default function AsciiArtGenerator() {
 
   // Función para manejar cambios de zoom desde gestos táctiles
   const handleZoomChange = (newZoom: number) => {
-    const clampedZoom = Math.min(Math.max(newZoom, 0.5), 2);
+    const clampedZoom = Math.min(Math.max(newZoom, 0.1), 2);
     setZoom(clampedZoom);
   };
 
