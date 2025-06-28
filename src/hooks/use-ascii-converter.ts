@@ -130,7 +130,6 @@ export function useAsciiConverter() {
           ? 0.4
           : 0.5);
 
-      // ...dentro de downloadAsImage...
       ctx.font = `${fontSize}px monospace`;
       ctx.textBaseline = "top";
       const lines = asciiArt
@@ -143,7 +142,6 @@ export function useAsciiConverter() {
       const canvasHeight = lines.length * lineHeight + 40;
       canvas.width = canvasWidth;
       canvas.height = canvasHeight;
-      // ...resto igual...
 
       // Configurar el contexto
       ctx.font = `${fontSize}px monospace`;
