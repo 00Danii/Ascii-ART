@@ -9,6 +9,8 @@
     "lint": "next lint",
     "tauri:dev": "tauri dev",
     "tauri:build": "tauri build",
+    "dev:android": "tauri android dev",
+    "build:android": "tauri android build",
     "export": "next export"
   },
   "dependencies": {
