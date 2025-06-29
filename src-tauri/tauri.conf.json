@@ -15,7 +15,7 @@
         "title": "Ascii-ART",
         "width": 1200,
         "height": 800,
-        "resizable": true,
+        "resizable": false,
         "fullscreen": false
       }
     ],
