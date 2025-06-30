@@ -102,7 +102,7 @@ export function useAsciiConverter() {
   );
 
   const downloadAsImage = useCallback(
-    (
+    async (
       asciiArt: string,
       coloredAscii: ColoredPixel[][],
       settings: AsciiSettings,
@@ -113,6 +113,10 @@ export function useAsciiConverter() {
 
       const ctx = canvas.getContext("2d");
       if (!ctx) return;
+
+      // Importar dinámicamente para evitar errores en entornos no-Tauri
+      const { writeBinaryFile } = await import("@tauri-apps/api/fs");
+      const { pictureDir, join } = await import("@tauri-apps/api/path");
 
       const colorOption = COLOR_OPTIONS[settings.colorMode];
       const charConfig = CHAR_STYLE_CONFIG[0];
@@ -209,19 +213,23 @@ export function useAsciiConverter() {
         });
       }
 
-      // Descargar la imagen
-      canvas.toBlob((blob) => {
-        if (blob) {
-          const url = URL.createObjectURL(blob);
-          const link = document.createElement("a");
-          link.href = url;
-          link.download = "ascii-art.png";
-          document.body.appendChild(link);
-          link.click();
-          document.body.removeChild(link);
-          URL.revokeObjectURL(url);
+      // --- NUEVA LÓGICA DE GUARDADO PARA ANDROID ---
+      const blob = await new Promise<Blob | null>((resolve) =>
+        canvas.toBlob(resolve, "image/png")
+      );
+
+      if (blob) {
+        try {
+          const buffer = await blob.arrayBuffer();
+          const fileName = `ascii-art-${Date.now()}.png`;
+          const filePath = await join(await pictureDir(), fileName);
+
+          await writeBinaryFile(filePath, new Uint8Array(buffer));
+        } catch (error) {
+          console.error("Error al guardar la imagen:", error);
+          alert("Error al guardar la imagen.");
         }
-      }, "image/png");
+      }
     },
     []
   );
